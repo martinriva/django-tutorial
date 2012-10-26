@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>Mis Posts</p>
+
+{% for post in posts %}
+	<div>
+		<p>Title:</p><div>{{ post.title }}</div>
+		<div>Datetime: {{ post.datetime }}</div>
+		<p>{{ post.content }}</p>
+	</div>
+{% endfor%}
+
+{% endblock %}

@@ -9,10 +9,6 @@ def home(request):
     #return render_to_response("core/home.html", {})
     return render_to_response("core/home.html", {'user': 'Martin'})
 
-def posts(request):
-    #return HttpResponse("<html>Home</html>")    
-    #return render_to_response("core/home.html", {})
-    return render_to_response("core/home.html", {'user': 'Martin'})
 
 def example_00(request):
     return HttpResponse("<html><b>Esto es HTML crudo!!</b></html>")

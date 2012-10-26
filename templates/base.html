@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	
+	<style type="text/css">
+	
+	body{
+		font-family: 'Open Sans', sans-serif;
+	}
+	.content{
+		min-height: 200px;
+	}
+	
+	.header{
+		background: #eee;
+	}
+	
+	.footer{
+		background: #eee;
+	}
+	
+	ul li {
+		list-style: none;
+		display: inline;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+	</style>
+	
+</head>
+<body>
+	<div class="header">
+		<ul>
+			<li>Home</li><span>|</span>
+			<li>Option #1</li><span>|</span>
+			<li>Option #2</li><span>|</span>
+			<li>Option #3</li><span>|</span>
+		</ul>
+	</div>
+	<div class="content">
+	{% block content %}This is the default content!{% endblock %}
+	</div>
+	<div class="footer">
+		<ul>
+			<li>link #1</li>
+			<li>link #2</li>
+			<li>link #3</li>
+		</ul>
+	</div>
+</body>
+</html>
