@@ -1,4 +1,12 @@
 # Django settings for other project.
+import os
+import sys
+import logging
+
+# Get acces to apps & libs folder
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+sys.path.insert(1, os.path.join(PROJECT_ROOT, 'apps'))
+sys.path.insert(2, os.path.join(PROJECT_ROOT, 'libs'))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -60,7 +68,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = PROJECT_ROOT + "/static/"
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -97,6 +105,18 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     #'apps.core.middleware.ExtraLog'
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+            "django.contrib.auth.context_processors.auth",
+            "django.core.context_processors.debug",
+            "django.core.context_processors.i18n",
+            "django.core.context_processors.media",
+            "django.core.context_processors.static",
+            "django.core.context_processors.tz",
+            "django.contrib.messages.context_processors.messages",
+            "apps.core.context_processor.static_url",
+            "apps.core.context_processor.debug"            
 )
 
 ROOT_URLCONF = 'urls'
@@ -156,14 +176,3 @@ LOGGING = {
         },
     }
 }
-
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-            "django.contrib.auth.context_processors.auth",
-            "django.core.context_processors.debug",
-            "django.core.context_processors.i18n",
-            "django.core.context_processors.media",
-            "django.core.context_processors.static",
-            "django.core.context_processors.tz",
-            "django.contrib.messages.context_processors.messages"
-)

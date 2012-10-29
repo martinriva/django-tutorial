@@ -3,6 +3,10 @@
 {% block content %}
 <p>Bienvenidos a mi Blog!</p>
 
+{{ STATIC_URL }}
+
+{{ DEBUG }}
+
 {% for post in posts %}
 	<div>
 		<p>Title:</p><div>{{ post.title }}</div>

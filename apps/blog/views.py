@@ -1,9 +1,10 @@
 # Create your views here.
 from django.shortcuts import render_to_response
+#from django.template.context import RequestContext
 
 def home(request):
     posts = []
-    return render_to_response("blog/home.html", {'posts': posts})
+    return render_to_response("blog/home.html", {'posts': posts}) #, RequestContext(request))
 
 
 def posts(request):
