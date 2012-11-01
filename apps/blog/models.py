@@ -7,7 +7,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, blank=True, null=True)
     title = models.CharField(blank=False, max_length=100)
     content = models.TextField(blank=False, max_length=40)
-    datetime = models.DateTimeField(blank=True, default=datetime.datetime.now())
+    datetime = models.DateTimeField(blank=True, auto_now_add=True)
     visits = models.IntegerField(default=0)
 
 class Comment(models.Model):

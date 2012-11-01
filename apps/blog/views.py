@@ -28,7 +28,7 @@ def create_post(request):
             if form.is_valid(): # All validation rules pass
                 # Process the data in form.cleaned_data
                 # ...
-                user = User.objects.all()[1]
+                user = User.objects.all()[0]
                 post = form.save(commit=False)
                 post.author = user
                 post.save()
