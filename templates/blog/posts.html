@@ -1,14 +1,24 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<p>Mis Posts</p>
+{% block sub_menu %}
+<ul>
+	<li><a href="{% url blog_home %}">&lt; Back</a></li>	
+</ul>
+{% endblock %}
 
+{% block content %}
+
+<h3>All Posts</h3>
+
+<div class="posts">
 {% for post in posts %}
-	<div>
-		<p>Title:</p><div>{{ post.title }}</div>
-		<div>Datetime: {{ post.datetime }}</div>
-		<p>{{ post.content }}</p>
+	<div class="post">
+		<div class="title">{{ post.title }}</div>
+		<div class="author">posted by: {{ post.author|title }} -</div>
+		<div class="date">{{ post.datetime|date:"H:i d M Y" }}</div>
+		<div class="content">{{ post.content }}</div>
 	</div>
 {% endfor%}
+</div>
 
 {% endblock %}

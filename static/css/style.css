@@ -1,0 +1,109 @@
+a {
+	text-decoration: none;
+	color: #fff;	
+}
+
+h3 {
+	font-family: sans-serif;
+	border-bottom: 1px dashed #bbb;
+	width: 95%;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#content{
+	margin: 20px 0 0 20px;
+	min-height: 500px;
+}
+
+#header{
+	padding: 10px;
+	background: #092E20;
+	min-height: 50px;
+	color: #fff;
+	border-bottom: 5px solid #CECECE;
+}
+
+#logo{
+	font-size: 30px;	
+	font-weight: bolder;
+}
+
+#footer{
+	padding: 10px;		
+	background: #092E20;
+	min-height: 50px;
+	color: #fff;
+}
+
+#footer ul, #header ul{		
+	margin: 5px 0px;
+	padding: 0px;
+}
+
+#footer ul li, #header ul li{
+	list-style: none;
+	display: inline;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+#sub_menu {
+	border-bottom: 1px solid #bbb;
+	min-height: 37px;
+}
+
+#sub_menu ul {
+	margin: 0px;
+	padding: 8px 10px;
+}
+
+#sub_menu ul li{
+	list-style: none;
+	display: inline;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+#sub_menu ul li a{
+	color: #333;
+}
+
+.form_container {
+	width: 100px;
+}
+
+.post {
+	border-bottom: 1px dotted #eee;
+	padding: 10px;
+}
+
+.post .title {
+	font-size: 16px;
+	color: #092E20;
+	font-weight: bold;
+}
+
+.post .date {
+	font-size: 10px;
+	color: #bbb;
+	font-style: italic;
+}
+
+.post .author {
+	font-size: 10px;
+	color: #bbb;
+	float: left;	
+	margin-right: 5px;
+}
+
+.post .content {
+	padding: 10px 0px;
+	font-size: 13px;
+	text-align: justify;
+	width: 450px;	
+}
