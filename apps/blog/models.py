@@ -1,5 +1,3 @@
-import datetime
-
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -9,6 +7,10 @@ class Post(models.Model):
     content = models.TextField(blank=False, max_length=40)
     datetime = models.DateTimeField(blank=True, auto_now_add=True)
     visits = models.IntegerField(default=0)
+    
+    def __unicode__(self):
+        return self.title
+        
 
 class Comment(models.Model):
     author = models.ForeignKey(User)
