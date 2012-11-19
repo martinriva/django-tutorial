@@ -108,6 +108,15 @@ body{
 	width: 450px;	
 }
 
+.comment {
+	background: #eee;
+	border: 1px solid #bbb;
+	width: 200px;
+	font-size: 12px;
+	float: leff;
+	margin: 8px;
+	padding: 8px;	
+}
 
 .errorlist {
 	margin: 0px;

@@ -10,9 +10,12 @@ class Post(models.Model):
     
     def __unicode__(self):
         return self.title
-        
+
 
 class Comment(models.Model):
     author = models.ForeignKey(User)
     post = models.ForeignKey(Post)
     content = models.CharField(blank=False, max_length=100)
+    
+
+

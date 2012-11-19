@@ -11,12 +11,23 @@
 <h3>All Posts</h3>
 
 <div class="posts">
-{% for post in posts %}
+{% for post, comments in posts.iteritems %}
 	<div class="post">
-		<div class="title">{{ post.title }}</div>
+		<div class="title">{{ post.title|upper }}<span><a style="color:gray" href="{% url blog_edit_post post.id %}">(edit)</a></span></div>
 		<div class="author">posted by: {{ post.author|title }} -</div>
 		<div class="date">{{ post.datetime|date:"H:i d M Y" }}</div>
 		<div class="content">{{ post.content }}</div>
+		
+		<div>
+		{% for comment in comments %}
+			<div class="comment">
+				<div><b>{{ comment.author }} </b>said:</div>
+				<p>{{ comment.content|title }}</p>
+			</div>
+		{% empty %}
+			<div><i>No Commments</i></div>
+		{% endfor %}
+		</div>
 	</div>
 {% empty %}
 Ouch! You don't have posts yet!
