@@ -1,11 +1,16 @@
 from django.shortcuts import render_to_response, render
 from django.http import HttpResponse
-from django.core.urlresolvers import reverse
 from django.template.context import RequestContext
+
+from apps.blog.forms import UserRegisterForm
+import logging
 
     
 def home(request):
-    return render(request, "core/home.html", {'user': 'Martin'})
+    form = UserRegisterForm()
+    logging.critical(form)
+    
+    return render(request, "core/home.html", {'user': 'Martin', 'form': form})
 
 def example_00(request):
     return HttpResponse("<html><b>Esto es HTML crudo!!</b></html>", RequestContext(request))

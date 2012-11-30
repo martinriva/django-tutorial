@@ -2,7 +2,7 @@ import logging
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.contrib.auth.models import User
 
 from apps.blog.models import Post
@@ -23,7 +23,7 @@ def posts(request):
     return render(request, "blog/posts.html", {'posts': result})
 
 def create_post(request):
-    
+
     form = PostForm(request.POST or None)
     if form.is_valid(): # All validation rules pass
         user = User.objects.all()[0]
@@ -36,13 +36,11 @@ def create_post(request):
 
 
 def edit_post(request, post_id):
-    
+    logging.critical(request.method)
     a_post_instance = get_object_or_404(Post, id=post_id)
     form = PostForm(request.POST or None, instance=a_post_instance)
     if form.is_valid(): # All validation rules pass
         post = form.save()
-        # do something
-        post.save()
         return redirect(reverse("blog_posts"))
         
     return render(request, "blog/edit_post.html", {'form': form})
