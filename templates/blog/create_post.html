@@ -12,7 +12,11 @@
 
 <div class="form_container">
 	<form method="post" action=".">{% csrf_token %}
-	    {{ form }}
+	    {{ form.as_p }}
+	    {% comment %}
+	    {{ form.as_ul }}
+	    {{ form.as_table }}
+	    {% endcomment %}
 	    <input type="submit" value="Create"/>
 	</form>
 </div>

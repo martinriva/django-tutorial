@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, Http404
 from django.contrib.auth.models import User
 
+from django.contrib.auth.views import login
 from apps.blog.models import Post
 from apps.blog.forms import PostForm
 

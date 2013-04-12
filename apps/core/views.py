@@ -7,10 +7,8 @@ import logging
 
     
 def home(request):
-    form = UserRegisterForm()
-    logging.critical(form)
     
-    return render(request, "core/home.html", {'user': 'Martin', 'form': form})
+    return render(request, "core/home.html", {'user': 'Martin'})
 
 def example_00(request):
     return HttpResponse("<html><b>Esto es HTML crudo!!</b></html>", RequestContext(request))

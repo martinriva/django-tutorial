@@ -1,12 +1,16 @@
 from apps.blog.models import Post
 from django.forms.widgets import Textarea
 from django import forms
-from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
 
+def without_asterix(value):
+    if "*" in value:
+        raise ValidationError("Value can't contain an asterix char")
+    
 class PostForm_0(forms.Form):
     
-    title = forms.CharField()
+    title = forms.CharField(required=True, help_text="Help text here")
     content = Textarea(attrs={'cols': 60, 'rows': 15})
     
     
@@ -16,10 +20,9 @@ def check_title(value):
     return value
     
     
-# Using ModelFroms
 class PostForm(forms.ModelForm):
     title = forms.CharField(validators=[check_title])
-    
+
     class Meta:
         model = Post
         fields = ('title', 'content')
