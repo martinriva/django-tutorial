@@ -3,8 +3,13 @@ import logging
 from django.shortcuts import render_to_response, render
 from django.http import HttpResponse
 from django.template.context import RequestContext
+
+from apps.blog.forms import UserRegisterForm
+import logging
+
     
 def home(request):
+    
     return render(request, "core/home.html", {'user': 'Martin'})
 
 def example_00(request):
