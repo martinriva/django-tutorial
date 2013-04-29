@@ -1,8 +1,8 @@
+import logging
+
 from django.shortcuts import render_to_response, render
 from django.http import HttpResponse
-from django.core.urlresolvers import reverse
 from django.template.context import RequestContext
-
     
 def home(request):
     return render(request, "core/home.html", {'user': 'Martin'})
@@ -15,3 +15,7 @@ def example_01(request):
 
 def example_02(request):
     return render(request, "core/home.html", {'user': 'Martin'})
+
+def example(request):
+    logging.critical("[VIEW] Entro en la vista!")
+    return HttpResponse("Renderizo!!", RequestContext(request))

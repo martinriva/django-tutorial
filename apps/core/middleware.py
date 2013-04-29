@@ -1,11 +1,17 @@
 import logging
 
 
-class ExtraLog(object):
+class Midexample(object):
 
     def process_request(self, request):
         
-        agent = request.META.get('HTTP_USER_AGENT', "unknown")
-        logging.critical(agent)
+        logging.critical("[Middleware] Procesando Request. REQUEST: %s" % request.META['PATH_INFO'])
                     
         return None
+    
+    
+    def process_response(self, request, response):
+        
+        logging.critical("[Middleware] Procesando Response. RESPONSE: %s" % response.content)
+        
+        return response
