@@ -15,13 +15,15 @@ ADMINS = (
     ('Martin', 'martin@devsar.com'),
 )
 
+LOGIN_URL = "/users/login/"
+
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_ROOT, 'db') + '/example.db',                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join(PROJECT_ROOT, 'example.db'),                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -79,7 +81,7 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.        
+    # Don't forget to use absolute paths, not relative paths.
 )
 
 # List of finder classes that know how to find static files in
@@ -105,7 +107,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'apps.core.middleware.MyMiddleware'
+    'apps.core.middleware.MyMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware', #Django-debug-toolbar
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -117,7 +120,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
     "apps.core.context_processor.static_url",
-    "apps.core.context_processor.debug"            
+    "apps.core.context_processor.debug"
 )
 
 ROOT_URLCONF = 'urls'
@@ -143,10 +146,12 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
-    
+
     # ------ YOUR APPS GOES HERE -------
     'apps.core',
-    'apps.blog'
+    'apps.blog',
+    'south', # Migraciones
+    'debug_toolbar', # Django-debug-toolbar
 )
 
 # A sample logging configuration. The only tangible logging
@@ -177,3 +182,25 @@ LOGGING = {
         },
     }
 }
+
+#Personalizacion de DJANGO DEBUG TOOLBAR
+INTERNAL_IPS = ('127.0.0.1',)
+
+DEBUG_TOOLBAR_PANELS = (
+    'debug_toolbar.panels.version.VersionDebugPanel',
+    'debug_toolbar.panels.timer.TimerDebugPanel',
+    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
+    'debug_toolbar.panels.headers.HeaderDebugPanel',
+    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+    'debug_toolbar.panels.template.TemplateDebugPanel',
+    'debug_toolbar.panels.sql.SQLDebugPanel',
+    'debug_toolbar.panels.signals.SignalDebugPanel',
+    'debug_toolbar.panels.logger.LoggingPanel',
+)
+
+# Local Settings 
+try:
+    import local_settings
+except ImportError:
+    logging.warning("Ignorando local_settings.py, el archivo no exites")
+

@@ -9,7 +9,9 @@ urlpatterns = patterns('',
     # url(r'^$', 'apps.core.views.home', name='home'),
     url(r'^', include('apps.core.urls')),
     url(r'^blog/', include('apps.blog.urls')),
-    
+    url(r'^users/login/', "django.contrib.auth.views.login", dict(template_name="login.html"), name="login"),
+    url(r'^users/logout/', "django.contrib.auth.views.logout", {"next_page": "/"}, name="logout"),
+
     # -------- ADMIN -----------
     # Uncomment the admin/doc line below to enable admin documentation:
     #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -26,4 +28,4 @@ if settings.DEBUG:
         url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
             'document_root': settings.MEDIA_ROOT,
             }),
-    )  
+    )
