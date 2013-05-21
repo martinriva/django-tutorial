@@ -1,0 +1,6 @@
+#Requerimientos del proyecto
+django==1.4
+gunicorn
+South
+django-debug-toolbar
+django-south-admin
